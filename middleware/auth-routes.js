@@ -3,6 +3,7 @@
 var bodyParser = require('body-parser');
 var multer  = require('multer');
 var fs = require('fs');
+var random = require("node-random");
 /*requiring node modules starts */
 
 /*Telling Multer where to upload files*/
@@ -133,8 +134,19 @@ function routes(app,connection,sessionInfo){
 			/*
 				When uploading of file completes, Insert the user.
 			*/
+			var nuserid=0;
+			
+			random.numbers({
+			    "number": 1,
+			    "minimum": 1,
+			    "maximum": 6
+			}, function(error, data) {
+			    if (error) throw error;
+			    nuserid = data;
+			    });
+			
 			var insert_data = {
-				id:'',
+				id:nuserid,
 				name:req.body.username,
 				password:req.body.password,
 				p_photo:file_name,
@@ -199,11 +211,14 @@ var query_runner=function(data,callback){
 	var insert_data=data.insert_data;
 	db_conncetion.getConnection(function(err,con){
 		if(err){
+			console.log(err);
+			console.log(query);
 		  con.release();
 		}else{
 			db_conncetion.query(String(query),insert_data,function(err,rows){
 		    con.release();
 		    if(!err) {
+		    	console.log(query);
 		    	callback(rows);
 		    } else {
 		      console.log(err);  
