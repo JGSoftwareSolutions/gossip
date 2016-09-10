@@ -35,13 +35,17 @@ function routes(app,connection,io,sessionInfo){
 	    	*/
 
 			var should_add=true;
+			console.log(userinfo);
 	    	if(users.length == 0){
 	    		userinfo.socketId=socket.id;
 	    		users.push(userinfo);
 	    	}else{
 	    		users.forEach(function(element, index, array){
-	    			if(element.id == userinfo.id){
-			    		should_add=	false;	    		
+	    			if(userinfo!=null)
+	    			{
+	    				if(element.id == userinfo.id){
+			    		should_add=	false;
+	    			}
 			    	}
 				});
 				if (should_add) {
