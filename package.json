@@ -1,0 +1,12 @@
+{
+  "name": "Real-Time-Private-Chatting-Codershood",
+  "version": "0.0.1",
+  "description": "Real-Time-Private-Chatting-Codershood",
+  "author": "Shashank Tiwari",
+  "license": "MIT",
+  "dependencies": {
+
+    "multer": "^1.1.0",
+    "node-random": "^1.0.1"
+  }
+}
