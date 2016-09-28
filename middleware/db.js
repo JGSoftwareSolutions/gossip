@@ -8,10 +8,10 @@ function db() {
 		creating MySql database connection 
 	*/
 	var con = mysql.createPool({
-		host : 'sql6.freesqldatabase.com',
-	  	user : 'sql6134309',
-	  	password : 'MLmSaEXZut',
-	  	database : 'sql6134309'
+		host : 'db4free.net',
+	  	user : 'gossipuser1',
+	  	password : 'mytesting321',
+	  	database : 'gossipdb'
 	});
 	this.connection=con;
 }
