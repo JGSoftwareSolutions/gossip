@@ -134,7 +134,7 @@ function routes(app,connection,sessionInfo){
 				When uploading of file completes, Insert the user.
 			*/
 			var insert_data = {
-				id:'',
+				id:0,
 				name:req.body.username,
 				password:req.body.password,
 				p_photo:file_name,
