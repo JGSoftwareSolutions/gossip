@@ -59,6 +59,7 @@ http.listen(8080,function(){
 });
 */
 
-http.listen(process.env.IP || '0.0.0.0',function(){
-    console.log("Listening on http://127.0.0.1:8080");
+http.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
+  var addr = http.address();
+  console.log("Chat server listening at", addr.address + ":" + addr.port);
 });
