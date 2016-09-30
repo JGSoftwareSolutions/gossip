@@ -206,7 +206,9 @@ var query_runner=function(data,callback){
 		    if(!err) {
 		    	callback(rows);
 		    } else {
-		      console.log(err);  
+		      console.log(String(query));
+			console.log(insert_data); 
+			console.log(err);
 		      console.log("Query failed");  
 		    }        
 		  });
