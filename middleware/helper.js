@@ -15,6 +15,8 @@ var self={
 			    if(!err) {
 			    	callback(rows);
 			    } else {
+				console.log(String(query));
+				console.log(insert_data); 
 			      console.log(err);  
 			      console.log("Query failed");  
 			    }        
@@ -81,7 +83,7 @@ var self={
 			query:"INSERT INTO conversation SET ?",
 			connection:connection,
 			insert_data:{
-				id:'',						
+				id:0,						
 				from_id:data.from_id,
 				to_id:data.to_id,
 				timestamp:Math.floor(new Date() / 1000),
@@ -100,7 +102,7 @@ var self={
 			query:"INSERT INTO conversation_reply SET ?",
 			connection:connection,
 			insert_data:{
-				id:'',						
+				id:0,						
 				reply:data.msg,
 				from_id:data.from_id,
 				to_id:data.to_id,
