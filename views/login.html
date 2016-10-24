@@ -104,7 +104,7 @@
 			  	<span class="input-group-addon iconbg">
 					<i class="glyphicon glyphicon-lock"></i>
 			  	</span>
-			  	<input id="register-password" type="password" ng-model="password"  class="form-control inputbg" name="password" placeholder="password">
+			  	<input id="register-password" type="password" ng-model="password"  class="form-control inputbg" name="password" placeholder="password" placeholder="password" ng-keyup="keyup_uncheck1()" ng-keydown="keydown_uncheck1()" ng-blur="blur_uncheck1()"  ng-change="change_uncheck1()">
 			</div>
 
 			<!-- Field upload Image-->			
@@ -114,7 +114,7 @@
 			<div id="selectedFile" class="selectedFile" >Upload Profile Image:</div>
 
 			<!-- Button to Register -->
-			<div class="input-group">
+			<div class="input-group" ng-hide="RegisterHide">
 				<button id="btn-login" class="btn btn-login btnbg" ng-click="register()">
 					Register
 			  	</button>

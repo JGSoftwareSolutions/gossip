@@ -30,6 +30,7 @@ app.controller('login-register', function ($scope,$http,$timeout,$window) {
     $scope.LoginAlert=true;
     $scope.RegisterAlert=true;
     $scope.RegisterBox=true;
+    $scope.RegisterHide=true;
     /* variables for  Hide show ends*/
 
     /* usernamme check variables starts*/
@@ -70,14 +71,38 @@ app.controller('login-register', function ($scope,$http,$timeout,$window) {
     };
     /* Login operation ends*/
 
-    
+    /* password check operation starts*/
+    $scope.keyup_uncheck1 = function() {
+        $timeout.cancel(TypeTimer);
+        TypeTimer=$timeout( function(){
+            var data={
+                username:$scope.username,
+                password:$scope.password
+            }
+            etc_function.check_username(data);            
+        }, TypingInterval);
+    };
+    $scope.keydown_uncheck1 = function(){
+        $timeout.cancel(TypeTimer);
+    };
+   
+    $scope.blur_uncheck1 = function(){
+        var data={
+            username:$scope.username,
+            password:$scope.password
+        }
+        etc_function.check_username(data);
+        $timeout.cancel(TypeTimer); 
+    };
+    /* password check operation ends*/
 
     /* usernamme check operation starts*/
     $scope.keyup_uncheck = function() {
         $timeout.cancel(TypeTimer);
         TypeTimer=$timeout( function(){
             var data={
-                username:$scope.username
+                username:$scope.username,
+                password:$scope.password
             }
             etc_function.check_username(data);            
         }, TypingInterval);
@@ -88,7 +113,8 @@ app.controller('login-register', function ($scope,$http,$timeout,$window) {
    
     $scope.blur_uncheck = function(){
         var data={
-            username:$scope.username
+            username:$scope.username,
+                password:$scope.password
         }
         etc_function.check_username(data);
         $timeout.cancel(TypeTimer); 
@@ -147,6 +173,11 @@ app.controller('login-register', function ($scope,$http,$timeout,$window) {
                     $scope.RegisterAlert = true;
                 }else{
                     $scope.RegisterAlert = false;
+                }
+                if( data.msg1 ){
+                    $scope.RegisterHide = true;
+                }else{
+                    $scope.RegisterHide = false;
                 }
             }).error(function(data, status) {
                 alert("Connection Error");

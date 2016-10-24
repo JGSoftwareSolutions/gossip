@@ -89,7 +89,8 @@ function routes(app,connection,sessionInfo){
 		post to handle username availability request
 	*/
 	app.post('/check_name', function(req, res){
-		username=req.body.username;		
+		username=req.body.username;	
+		password=req.body.password;
 		var data={
 			query:"select * from user where name='"+username+"'",
 			connection:connection
@@ -98,13 +99,24 @@ function routes(app,connection,sessionInfo){
 			
 			if(result.length>0) {
 		    	result_send={
-		    		msg:true
+		    		msg:true,
+		    		msg1:false
 		    	};
 		    } else {
+		    	if(username=="" || password=="")
+		    	{
 		    	result_send={
-		    		msg:false
-		    	};
-		    } 
+		    		msg:false,
+		    		msg1:true
+		    	}}
+		    	else
+		    	{
+			    	result_send={
+			    		msg:false,
+			    		msg1:false
+			    }}
+		    	;
+		    }
 		    res.write(JSON.stringify(result_send));
 			res.end();
 		});
