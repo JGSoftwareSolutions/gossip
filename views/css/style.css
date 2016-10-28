@@ -124,7 +124,7 @@ Login page starts
 div.p_photo-group {
     width: 80px;
     height: 60px;
-    background: url(/img/upload.PNG);
+    background: url(/img/upload.png);
     background-size: 80px 60px,cover;
     background-repeat: no-repeat;
     overflow: hidden;    
